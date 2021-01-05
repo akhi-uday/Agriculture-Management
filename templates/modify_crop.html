@@ -1,0 +1,41 @@
+{%extends "admin_base.html"%}
+
+
+{%block content%}
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    {{message}}
+</div>
+{% endfor %} {% endif %} {% endwith %}
+{% if form.errors %}
+      {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+          {% for error in field_errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                {{ form[field_name].label }}: {{ error }}
+          {% endfor %}</div>
+      {% endfor %}
+
+{% endif %}
+<div class="jumbotron">
+  <h1 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;">ENTER RELEVANT FIELDS:</h1>
+</div>
+<div class="container" style="background-color:#b3e3c0">
+  <form class="form-group"  method="POST">
+    {{form.hidden_tag()}}
+    <br>
+    {{form.district.label}}<br>
+    {{form.district(class="form-control form-control-lg")}}<br>
+    {{form.season.label}}<br>
+    {{form.season(class="form-control form-control-lg")}}<br>
+    {{form.food_crop.label}}
+    {{form.food_crop(class="form-control form-control-lg")}}<br>
+    {{form.cash.label}}
+    {{form.cash(class="form-control form-control-lg")}}<br>
+    {{form.save(class="btn btn-primary")}}<br><br><br>
+  </form>
+</div>
+{%endblock%}

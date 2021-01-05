@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+
+
+{% block content%}
+<div class="jumbotron">
+  <h1 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;">ENTER RELEVANT FIELDS:</h1></div>
+  <div class="container"style="background-color:#b3e3c0">
+
+
+  <form class="form-group" method="POST">
+    {{form.hidden_tag()}}
+    <br>
+    {{form.district.label}}<br>
+    {{form.district(class="form-control form-control-lg")}}<br>
+    {{form.crop.label}}<br>
+    {{form.crop(class="form-control form-control-lg")}}<br>
+    {{form.submit(class="btn btn-primary")}}<br><br>
+
+  </form>
+  {% if result %}
+  {% for res in result %}
+<span style="font-size:30px;text-decoration:underline">{{res.crop_name}}</span><br>
+  <p style="font-size:30px">The Minimum Support Price given to {{res.crop_name}} is Rs.{{res.price}} /quintal specified by the Government.</p><br><br>
+  <div class="text-center">
+    <img src="{{url_for('static',filename=image)}}" class="rounded" alt="...">
+    <div style="font-size:30px;text-decoration:underline;text-align:center">
+      {{res.crop_name}}
+    </div>
+    <br><br><br>
+
+  </div>
+  <h4>Are you growing the right crop?</h4>
+  <a class="btn btn-primary" href="{{url_for('crop_info')}}" role="button" >KNOW MORE</a><br><br><br><br><br>
+</div> <br><br><br><br>  {%endfor%}
+  {%endif%}
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+{% endblock%}

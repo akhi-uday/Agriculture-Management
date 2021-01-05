@@ -1,0 +1,94 @@
+{%extends "base.html"%}
+
+
+{% block content %}
+<div class="jumbotron">
+  <h1 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;">ENTER RELEVANT FIELDS:</h1>
+</div>
+<div class="container" style="background-color:#b3e3c0">
+  <form class="form-group" method="POST">
+    {{form.hidden_tag()}}<br>
+    {{form.district.label}}<br>
+    {{form.district(class="form-control form-control-lg")}}<br>
+    {{form.season.label}}<br>
+    {{form.season(class="form-control form-control-lg")}}<br>
+    {{form.submit(class="btn btn-primary")}}<br><br><br>
+
+  </form>
+  {% if result %}
+  <div class="image-container" style="text-align:center">
+
+
+  <img style="text-align:center" src="{{url_for('static',filename=image)}}" class="image-rounded"> </img><br><br>
+  </div>
+  <div class="wrapper">
+    <div class="card">
+      <div class="card-body">
+
+    <p style="font-size:30px;text-decoration-line:underline;text-decoration-style:solid"> {{result.district}}:</p>
+    <p style="font-size:30px">Best crop to grow in <span style="text-decoration:underline">{{s}}</span> season is:<span style="font-size:30px">
+    {%if s=='summer'%}
+    {{result.summer}}
+    {%endif%}
+    {%if s=='rainy'%}
+    {{result.rainy}}
+    {%endif%}
+    {%if s=='winter'%}
+    {{result.winter}}
+    {%endif%}</span></p>
+    <p style="font-size:30px">The cash crop grown best is <span style="font-size:30px">{{result.cash_crop}}  </span></p>
+    <p style="font-size:30px"> The Minimum Support Price for crop is Rs.<span style="text-decoration:underline">{{p1.price}}</span> /quintal</p>
+    <br><br>
+    <p style="font-size:30px">The Minimum Support Price for {{result.cash_crop}} is Rs.<span  style="text-decoration:underline">{{p2.price}}</span>/quintal</p>
+    <br><br>
+    <table class="table table">
+  <thead class=thead-dark>
+    <tr>
+      <th scope="col">AVG. Temperature(°C)</th>
+      <th scope="col">Soil REQ</th>
+      <th scope="col">Rainfall REQ(mm/year)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>{{info1.temp}}</td>
+      <td>{{info1.soil}}</td>
+      <td>{{info1.rainfall}}</td>
+  </tbody>
+</table >
+
+<br><br>
+<table class="table">
+
+
+<thead class=thead-dark>
+  <tr>
+    <th scope="col">AVG. Temperature</th>
+    <th scope="col">Soil REQ</th>
+    <th scope="col">Rainfall REQ</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+
+    <td>{{info2.temp}}</td>
+    <td>{{info2.soil}}</td>
+    <td>{{info2.rainfall}}</td>
+</tbody>
+</table>
+
+
+    </div>
+
+  {%endif%}
+
+  </div>
+</div>
+</div>
+<br><br><br><br><br><br>
+</div>
+
+{% endblock%}

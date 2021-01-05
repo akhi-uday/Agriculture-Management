@@ -1,0 +1,48 @@
+{%extends "base.html"%} {% block content%}
+
+
+<div class="jumbotron" >
+    <h1 style="border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;">SELECT THE RELEVANT DISTRICT:</h1>
+  </div>
+  <div class="container"  style="background-color:#b3e3c0">
+    <form method="POST">
+     {{form.hidden_tag()}}
+        <div style="font-size:1.875em">
+            <br> {{form.district.label}}
+            <br>
+        </div>
+        <br> {{form.district(class="form-control form-control-lg")}}
+        <br> {{form.submit(class="btn btn-primary")}}
+        <br><br><br>
+</form>
+{%if result%}
+<div class="img-rounded" style="text-align:center">
+  <img class="img-rounded" src="{{url_for('static',filename=image)}}" alt="{{url_for('static',filename='c1.jpg')}}" ></img>
+</div><br><br>
+<div class="card" style="font-size:20px">
+  <div class="card-body">
+
+        {% for res in result%}
+        <ul>
+          <h3 style="text-decoration:underline">{{res.dname}}.</h3><br>
+          <li>The district belongs to {{res.zone}}ISION zone.</li><br>
+
+          <li>Area available to agriculture:{{res.area}}.</li>
+          <br>
+          <li>Soil most widely found is:{{res.rainfall}} soil.</li><br>
+          <li>Average rainfall it has:{{res.soil}} mm/year.</li><br>
+          <h4>Major Productivity include:</h4>
+          <li>{{res.info}}</li>
+        </ul>
+        {% endfor %}
+
+      {% endif %}
+      <br><br>
+</div>
+</div>
+
+</div>
+
+{% endblock%}

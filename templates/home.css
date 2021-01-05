@@ -1,0 +1,13 @@
+h1{
+  text-align: center;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+
+}
+.container{
+  margin-left: 25px
+}
+#home{
+  background-color: #d6e8bc
+}

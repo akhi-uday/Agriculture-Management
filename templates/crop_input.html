@@ -1,0 +1,50 @@
+{% extends "base.html"%}
+ {% block content%}
+ {% if form.errors %}
+       {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+           {% for error in field_errors %}
+             <div class="alert alert-success alert-dismissible" role="alert">
+             <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                 {{ form[field_name].label }}: {{ error }}
+           {% endfor %}</div>
+       {% endfor %}
+
+{% endif %}
+<div class="jumbotron" >
+  <h1 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;">ENTER RELEVANT FIELDS:</h1>
+</div>
+<div class="container wrapper"style="background-color:#b3e3c0">
+  <form class="form-group" method="POST">
+    {{form.hidden_tag()}}<br>
+    {{form.name.label}}<br>
+    {{form.name(class="form-control form-control-lg")}}<br>
+    {{form.district.label}}<br>
+    {{form.district(class="form-control form-control-lg")}}<br>
+    {{form.crop.label}}<br>
+    {{form.crop(class="form-control form-control-lg")}}<br>
+    {{form.season.label}}<br>
+    {{form.season(class="form-control form-control-lg")}}<br>
+    {{form.investment.label}}<br>
+    {{form.investment(class="form-control form-control-lg")}}<br>
+    {{form.profit.label}}<br>
+    {{form.profit(class="form-control form-control-lg")}}<br>
+    {{form.submit(class="btn btn-primary form-control-lg")}}<br><br><br>
+  </form>
+  {% if graph1 %}
+  <div class="image-container" style="text-align:center">
+    <img src="{{graph1}}" style="align:center"></img>
+  </div><br><br>
+  <div class="image-container" style="text-align:center">
+    <img src="{{graph2}}" style="align:center"></img>
+  </div>
+  <br><br>
+  <div style="text-align:center">
+        <h5>The Average returns for the crop is Rs. {{avg}} for an investment of Rs.100000</h5>
+  </div>
+ {%endif%}
+<br><br><br><br>
+</div>
+
+{% endblock %}

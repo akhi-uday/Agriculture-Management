@@ -1,0 +1,48 @@
+{%extends "basic.html"%}
+{%block content%}
+<a id="login" style="float:right" class="btn btn-primary" href="{{url_for('signup')}}" role="button" align="right">Signup</a>
+<div class="jumbotron" align="center">
+  {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+  {% if form.errors %}
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+              <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  {{ form[field_name].label }}: {{ error }}
+            {% endfor %}</div>
+        {% endfor %}
+
+{% endif %}
+    <h1 style="border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;text-align:center">AGRICULTURE MANAGEMENT</h1>
+        <h2>LOGIN</h2>
+        <br>
+        <div class="container">
+            <form method="POST">
+              <div class="form-group" style="padding-left:200px;padding-right:200px">
+
+
+                {{form.hidden_tag()}}
+                <br> {{form.email.label}}
+                <br>{{form.email(class="form-control")}}
+                <br> {{form.password.label}}
+                <br>{{form.password(class="form-control")}}
+                <br>
+                <br>
+                <br>{{form.submit()}}
+                <br>
+                  </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

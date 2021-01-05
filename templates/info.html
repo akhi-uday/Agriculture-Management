@@ -1,0 +1,77 @@
+{%extends "base.html"%}
+
+{% block content %}
+<div class="jumbotron">
+  <h2 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;text-align:center">INFO ABOUT THE WEBSITE:</h2>
+  <br>
+  <div class="container">
+
+
+    <div class="card">
+      <div class="card-body">
+        <p>The agriculture in KARNATAKA is divided into 5 zones namely:
+          {%for z in zone%}
+        <ul>
+          <li>"{{z.zone_id}}"  {{z.zone}}ISION having {{z.nor}} districts.</li>
+        </ul>
+        </p>
+        {%endfor%}
+        <p>Each of the 30 districts have a comparitively different climate for each season. Based on this knowledge, for each season the most produvtive crop is stored for each district by which farmers can also co-ordinate the crops they need to grow.</p>
+        <p>Farmers can also check the Minimum Support Price for the crops they've grown.The data collected for the prices is as according to the recently released schemes by the Government of Karnataka.</p>
+        <p>Agriculture Management System is to help farmers by providing all kinds agriculture related information in the website.
+         Agriculture Management System is farmer management website application which helps farmers to give best-practice farming processes.</p>
+         <p>The main goal is too store a set of relevant data so that farmers can have an easy access for information on the type of crops they need to be growing to get an overall proﬁt on their yield. The main aim of the department is to achieve sustainable food production, there by increasing the socio-economic status of the farming community. Ultimately, using information to help agriculturists is the main concern.
+</p>
+<p>Minimum Support Price is the price at which government purchases crops for the farmers, to safeguard the interests of the farmers.</p>
+<p>Following is the link to the Officail Document produced by the Government with respect to this year's Kharif MSP.</p>
+<a href="http://agricoop.nic.in/sites/default/files/MSP_2019-20%20%28English%29.pdf" style="font-size:30px;text-decoration:underline">LINK HERE</a>
+<br><br>
+
+<br><br>
+
+<div class="container bg-dark mb-5 pt-2">
+                <a href="http://www.icar.org.in/" target="_blank">
+                    <img id="ContentPlaceHolder1_ImageButton1" class="ImageButton" src="{{url_for('static',filename='i1.PNG')}}" style="height:100%;width:100%;"></a>
+                <br>
+                 <br>
+                 <br>
+                <a href="https://www.ksndmc.org/Default.aspx" target="_blank">
+                    <img id="ContentPlaceHolder1_ImageButton2" class="ImageButton" src="{{url_for('static',filename='i2.PNG')}}" style="height:100%;width:100%;"></a>
+               <br>
+                 <br>
+                 <br>
+                <a href="http://krishimaratavahini.kar.nic.in/" target="_blank">
+                    <img id="ContentPlaceHolder1_ImageButton3" class="ImageButton" src="{{url_for('static',filename='i3.PNG')}}" style="height:100%;width:100%;"></a>
+              <br>
+                 <br>
+                 <br>
+                <a href="http://raitamitra.kar.nic.in/KAN/index.asp" target="_blank">
+                    <img id="ContentPlaceHolder1_ImageButton4" class="ImageButton" src="{{url_for('static',filename='i4.PNG')}}" style="height:100%;width:100%;"></a>
+                <br>
+                 <br>
+                 <br>
+                <a href="http://rkvy.nic.in/" target="_blank">
+                    <img id="ContentPlaceHolder1_ImageButton5" class="ImageButton" src="{{url_for('static',filename='i5.PNG')}}"style="height:100%;width:100%;"></a>
+                <br>
+                 <br>
+                 <br>
+
+               <br>
+                 <br>
+                 <br>
+
+
+            </div>
+
+        </div>
+  </div>
+
+      </div>
+  </div>
+
+
+
+
+{% endblock%}

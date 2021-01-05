@@ -1,0 +1,19 @@
+h1{
+  text-align: center;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+button{
+  text-align: right;
+  color: inherit;
+}
+#login{
+  text-align: left;
+}
+  .signup{
+    text-align: center;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}

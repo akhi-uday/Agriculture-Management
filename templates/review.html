@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+
+{% block content%}
+<div class="jumbotron">
+  <h2 style="border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;text-align:center">REVIEWS ABOUT THE WEBSITE:</h2>
+
+    <form method="POST">
+      {{form.hidden_tag()}}
+      <br>
+      {{form.username.label}}<br>
+      {{form.username(class="form-control")}}<br>
+      {{form.review.label}}<br>
+      {{form.review(class="form-control")}}<br>
+      {{form.submit(class="btn btn-primary")}}
+      <br><br><br>
+    </form>
+    {%if result%}
+    <div class="card">
+  <div class="card-body">
+    <ul>
+    {%for res in result%}
+
+    <p>Date:{{ res.date.strftime('%Y-%m-%d') }}</p>
+    <li>{{res.username}}:&nbsp;&nbsp;{{res.review}}</li>
+    <br><br>
+    {%endfor%}
+  </ul></div>
+</div>
+{%endif%}
+
+</div>
+
+
+{% endblock%}

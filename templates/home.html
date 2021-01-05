@@ -1,0 +1,72 @@
+
+{%extends "base.html"%}
+<div class="container" style="min-height:100% width:80%">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-success alert-dismissible center-block" role="alert" style="text-align:center">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+{% block content%}
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-success alert-dismissible" role="alert">
+		  <button type="button" align="center" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+
+<div class="jumbotron" style="text-align: center">
+	<div id="mySidebar" class="sidebar">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  <a href="{{url_for('contact')}}">About</a>
+
+		<a href="{{url_for('login')}}">LOGOUT</a>
+	</div>
+<h1 style="border-bottom-color: black;
+border-bottom-style: solid;
+border-bottom-width: 2px;">AGRICULTURE MANAGEMENT</h1>
+
+
+<div id="main"style="text-align:left">
+  <button class="openbtn" onclick="openNav()">☰ </button>
+
+</div>
+</div>
+</div>
+<br>
+<div class="card">
+	<div class="card-body">
+
+
+
+
+<div id="home" class="container" style="background-color:#b3e3c0" >
+  <p style="font-size:20px">THIS WEBSITE PROVIDES USEFUL INFORMATION REQUIRED FOR FARMERS REGARDING THEIR REGION, THE CROPS TO BE GROWN IN A PARTICULAR
+     REGION AND THE PRICES OF CROPS THEY WISH TO KNOW.</p>
+     <br>
+  <h2>KNOW THE RIGHT CROP:</h2>
+  <p>Click here to select your region and know if your growing the right crop.</p>
+  <a class="btn btn-primary" href="{{url_for('crop_info')}}" role="button" >KNOW MORE</a>
+
+  <br><br><br>
+  <h2>KNOW THE CROP PRICE:</h2>
+  <p>Click here to select your crop and the price in the market.</p>
+  <a class="btn btn-primary" href="{{url_for('crop_price')}}" role="button" >KNOW MORE</a>
+	<br><br><br>
+	<h2>INPUT YOUR DATA:</h2>
+  <p>Click here to input your crop investment and profit and get statistics about it.</p>
+  <a class="btn btn-primary" href="{{url_for('crop_price')}}" role="button" >KNOW MORE</a>
+<br><br><br><br>
+</div>
+</div>
+</div>
+<br><br><br><br>
+{% endblock %}
